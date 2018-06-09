@@ -1,0 +1,28 @@
+App\Entity\User:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        added:
+            type: datetime
+
+    manyToMany:
+        fruits:
+            targetEntity: App\Entity\Fruit
+            inversedBy: user
+            joinTable:
+               name: users_fruits
+               joinColumns:
+                  user_id:
+                      referencedColumnName: id
+               inverseJoinColumns:
+                  fruit_id:
+                      referencedColumnName: id
